@@ -17,16 +17,19 @@
   ansible.builtin.import_playbook: ../../rsyslog.yml
   vars:
     target_host: "all"
+    molecule_testing: true
 
 - name: Test audit
   ansible.builtin.import_playbook: ../../audit.yml
   vars:
     target_host: "all"
+    molecule_testing: true
 
 - name: Test hosts
   ansible.builtin.import_playbook: ../../hosts.yml
   vars:
     target_host: "all"
+    molecule_testing: true
 
 - name: Test RPM baseline
   ansible.builtin.import_playbook: ../../rpm_baseline.yml

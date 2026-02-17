@@ -7,10 +7,7 @@
   - name: Ensure RPMs that are included in the Security baseline are installed
     ansible.builtin.dnf:
       name:
-        - audit
         - rsyslog
-        - aide
-        - firewalld
         - lsof
         - wget
       state: present

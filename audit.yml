@@ -4,6 +4,12 @@
   become: yes
   become_method: enable
   tasks:
+  - name: Ensure audit is installed
+    ansible.builtin.dnf:
+      name: audit
+      state: present
+    when: molecule_testing is not defined
+
   - name: Ensure auditd rule file is according to Security baseline
     ansible.builtin.copy:
       src: audit.rules
@@ -11,9 +17,11 @@
       owner: root
       group: root
       mode: 0600
+    when: molecule_testing is not defined
 
   - name: Ensure auditd daemon is started and enabled
     ansible.builtin.service:
       name: auditd
       state: started
       enabled: true
+    when: molecule_testing is not defined

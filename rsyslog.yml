@@ -17,10 +17,9 @@
       group: root
       mode: 0644
 
-  - name: Ensure rsyslog is starte and enabled
+  - name: Ensure rsyslog is started and enabled
     ansible.builtin.service:
       name: rsyslog
       state: started
       enabled: true
-
-
+    when: molecule_testing is not defined
