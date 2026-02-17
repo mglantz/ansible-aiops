@@ -36,3 +36,9 @@
   vars:
     target_host: "all"
 
+- name: Test install_rpm
+  ansible.builtin.import_playbook: ../../install_rpm.yml
+  vars:
+    target_host: "all"
+    rpm: "nmap-ncat"
+
