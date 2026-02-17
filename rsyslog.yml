@@ -4,7 +4,7 @@
   become: true
   tasks:
   - name: Ensure rsyslog is installed
-    ansible.builtin.dnf:
+    ansible.builtin.package:
       name: rsyslog
       state: present
 

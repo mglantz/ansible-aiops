@@ -4,7 +4,7 @@
   become: true
   tasks:
     - name: Ensure the httpd software is installed
-      ansible.builtin.dnf:
+      ansible.builtin.package:
         name: httpd
         state: present
     - name: Copy index.html page to html root
