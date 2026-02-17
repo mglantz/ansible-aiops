@@ -2,6 +2,7 @@ recursive-include molecule *
 recursive-include .github *
 recursive-include files *
 recursive-include templates *
+recursive-include rulebooks *
 include *.yml
 include MANIFEST.in
 include README.md
