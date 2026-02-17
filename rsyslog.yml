@@ -1,0 +1,25 @@
+---
+- name: Ensure auditd functions
+  hosts: "{{ target_host }}"
+  become: true
+  tasks:
+  - name: Ensure rsyslog is installed
+    ansible.builtin.dnf:
+      name: rsyslog
+      state: present
+
+  - name: Enable rsyslog.conf is correct
+    ansible.builtin.copy:
+      src: files/rsyslog.conf
+      dest: /etc/rsyslog.conf
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Ensure rsyslog is starte and enabled
+    ansible.builtin.service:
+      name: rsyslog
+      state: started
+      enabled: true
+
+

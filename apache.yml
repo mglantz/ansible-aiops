@@ -1,0 +1,24 @@
+---
+- name: Install Apache, a web server
+  hosts: "{{ target_host }}"
+  become: true
+  tasks:
+    - name: Ensure the httpd software is installed
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+    - name: Copy index.html page to html root
+      ansible.builtin.copy:
+        content: |
+          <html>
+          <body>
+          Hej, hallo, hello, hi.
+          </body>
+          </html>
+        dest: /var/www/html/index.html
+        mode: 0644
+    - name: Ensure the httpd service is enabled and started
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true

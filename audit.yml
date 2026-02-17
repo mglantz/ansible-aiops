@@ -1,0 +1,18 @@
+---
+- name: Ensure auditd functions
+  hosts: "{{ target_host }}"
+  become: true
+  tasks:
+  - name: Ensure auditd rule file is according to Security baseline
+    ansible.builtin.copy:
+      src: audit.rules
+      dest: /etc/audit/rules.d/audit.rules
+      owner: root
+      group: root
+      mode: 0600
+
+  - name: Ensure auditd daemon is started and enabled
+    ansible.builtin.service:
+      name: auditd
+      state: started
+      enabled: true

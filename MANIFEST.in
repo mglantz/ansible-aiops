@@ -1,0 +1,12 @@
+recursive-include molecule *
+recursive-include .github *
+include *.yml
+include MANIFEST.in
+include README.md
+include secure-org_pubkey.asc
+include LICENSE
+exclude .ansible-lint
+exclude .gitignore
+recursive-exclude .git *
+recursive-exclude constructed-inventory *
+recursive-exclude inventory *

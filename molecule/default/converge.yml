@@ -1,0 +1,35 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+
+- name: Test apache
+  ansible.builtin.import_playbook: ../../apache.yml
+  vars:
+    target_host: "localhost"
+
+- name: Test sysctl
+  ansible.builtin.import_playbook: ../../sysctl.yml
+  vars:
+    target_host: "localhost"
+
+- name: Test rsyslog
+  ansible.builtin.import_playbook: ../../rsyslog.yml
+  vars:
+    target_host: "localhost"
+
+- name: Test audit
+  ansible.builtin.import_playbook: ../../audit.yml
+  vars:
+    target_host: "localhost"
+
+- name: Test hosts
+  ansible.builtin.import_playbook: ../../hosts.yml
+  vars:
+    target_host: "localhost"
+
+- name: Test RPM baseline
+  ansible.builtin.import_playbook: ../../rpm_baseline.yml
+  vars:
+    target_host: "localhost"
+
