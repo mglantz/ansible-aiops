@@ -1,7 +1,8 @@
 ---
 - name: Ensure auditd functions
   hosts: "{{ target_host }}"
-  become: true
+  become: yes
+  become_method: enable
   tasks:
   - name: Ensure rsyslog is installed
     ansible.builtin.package:

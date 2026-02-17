@@ -1,10 +1,11 @@
 ---
 - name: Install Apache, a web server
   hosts: "{{ target_host }}"
-  become: true
+  become: yes
+  become_method: enable
   tasks:
     - name: Ensure the httpd software is installed
-      ansible.builtin.package:
+      ansible.builtin.dnf:
         name: httpd
         state: present
     - name: Copy index.html page to html root
