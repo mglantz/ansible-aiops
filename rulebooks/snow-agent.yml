@@ -1,0 +1,17 @@
+- name: AIops ServiceNow incident response
+  hosts: all
+  sources:
+    - name: Pull incidents from ServiceNow
+      servicenow.itsm.records:
+        table: incident
+        interval: 10
+  rules:
+    - name: Resolve breaches to security baseline
+      condition:
+        event.state == "1" and event.short_description is search("Breach of security baseline:", ignorecase=false)
+      action:
+        run_job_template:
+          name: 'Run Claude'
+          organization: 'Default'
+          filter: '*'
+
